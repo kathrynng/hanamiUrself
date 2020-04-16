@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css?family=Nanum+Pen+Script&display=swap');
+
+html, body, h1, h2, h3, p{
+    margin: 0;
+    padding: 0;
+    font-family: 'Nanum Pen Script', monospace;
+}
+
+.btn-wrapper{
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+}
+
+.btn{
+    font-size: 20pt;
+    border-radius: 5px;
+    color:pink;
+    border: 2px solid pink;
+
+    margin: 0 5em;
+}
+
+.btn-row{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn:hover{
+    border-color: plum;
+    color:plum;
+    cursor: pointer;
+}
+
+.btn-wrapper input[type=file]{
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+    font-size: 100px;
+}
+
+#canvas-div{
+    width: 800px;
+    margin: 2em auto;
+}
