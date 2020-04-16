@@ -9,25 +9,29 @@ var loadImg = function(event){
 function p5run(){
     if(canv===null){
         const s = p => {
-            var nCb, cherries
+            var nCb = 25, cherries = []
 
             p.setup = function(){
-                p.fill(20,20,60,60)
-                p.ellipseMode(CENTER)
+               
                 p.createCanvas(800, 800);
                 p5img = p.loadImage(img);
                 
-                nCb = 2
-                cherries = []
                 for(var i = 0; i < nCb; i++)
                     cherries.push(new cherryB())
                     
                 
-                console.log(cherries)
+                    
+               p.colorMode(p.RGB, 255, 255, 255, 1)
+               p.noStroke();
+            
             }
             p.draw = function(){
-                p.background(23)
-                // p.image(p5img,0,0,800,800)
+                p.background(55)
+
+                p.imageMode(p.CORNER)
+                p.image(p5img,0,0,800,800)
+
+                
 
                 //run cherry blossoms
                 cherries.forEach(cherry => {
@@ -39,31 +43,34 @@ function p5run(){
 
             //cherry blossom obj
             cherryB = function() {
-                // this.cbimg = '../imgs/petal' + p.int(p.random(1,4)) + '.png'
-                this.x = p.int(p.random(0, 1))
+                
+                this.cbimg = '../imgs/petal' + p.int(p.random(1,4)) + '.png'
+                this.x = p.int(p.random(-400, 400))
                 this.y = -5
-                this.speedX = p.random(2, 10)
-                this.speedY =  p.random(2, 10)
+                this.speedX = p.random(3, 7)
+                this.speedY =  p.random(3, 7)
+                this.cherryImg = p.loadImage(this.cbimg)
+
                 
                 this.move = function (){
                     this.x += this.speedX
                     this.y += this.speedY
 
-                    if(this.x > p.width){
-                        let indx = cherries.indexOf(this)
-                        cherries.splice(indx, 1)
-                        // this.x = p.int(p.random(0, 1))
-                        // this.y = 0
+                    if(this.x > 810 || this.y > 810){
+                        this.x = p.int(p.random(-400, 400))
+                        this.y = -5
 
                     }
                 }
 
                 this.display = function(){
+                    // p.fill(255,192,203,1)
+                    // p.ellipseMode(p.CENTER)
+                    // p.ellipse(this.x, this.y, 15)
                     
-                    // cherryImg = p.loadImage(this.cbimg)
-                    // p.image(cherryImg, this.x, this.y)
+                    p.imageMode(p.CENTER)
 
-                    p.ellipse(this.x, this.y, 25)
+                    p.image(this.cherryImg, this.x, this.y)
                   
                     
                 }
