@@ -6,10 +6,14 @@ html, body, h1, h2, h3, p{
     font-family: 'Nanum Pen Script', monospace;
 }
 
-h1{
+h1, h2, h3{
     color:rgb(211, 150, 160);
     text-align: center;
     margin:2rem 0;
+}
+
+a{
+    text-decoration: none;
 }
 
 .btn-wrapper{
@@ -33,7 +37,13 @@ h1{
     justify-content: center;
 }
 
-.btn:hover{
+/* .btn:hover{
+    border-color: plum;
+    color:plum;
+    cursor: pointer;
+} */
+
+.btn-wrapper input[type=file]:hover, .btn:hover{
     border-color: plum;
     color:plum;
     cursor: pointer;
@@ -44,7 +54,6 @@ h1{
     left: 0;
     top: 0;
     opacity: 0;
-    font-size: 100px;
 }
 
 #canvas-div{
@@ -53,4 +62,14 @@ h1{
 
     display: flex;
     justify-content: center;
+}
+
+#creds h2{
+    margin-bottom: 1rem;
+}
+
+#creds img{
+    width:5em;
+    display:block;
+    margin: 0 auto;
 }

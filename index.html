@@ -10,17 +10,17 @@
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://metatags.io/">
+    <meta property="og:url" content="hanami.kathrynng.com">
     <meta property="og:title" content="Hanami Urself">
     <meta property="og:description" content="Miss cherry blossoms because you're social distancing? Now stay at home and Hanami yourself!">
-    <meta property="og:image" content="">
+    <meta property="og:image" content="imgs/splash.png">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://metatags.io/">
+    <meta property="twitter:url" content="hanami.kathrynng.com">
     <meta property="twitter:title" content="Hanami Urself">
     <meta property="twitter:description" content="Miss cherry blossoms because you're social distancing? Now stay at home and Hanami yourself!">
-    <meta property="twitter:image" content="">
+    <meta property="twitter:image" content="imgs/splash.png">
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
@@ -39,16 +39,21 @@
         <div id="work" class="container">
             <div class="btn-row">
                 <div class="btn-wrapper" id="upld-btn">
-                    <button class="btn">Upload an Image</button>
+                    <label for="upload" class="btn">Upload an Image</label>
                     <input type='file' accept="image/*" name="image" onchange="loadImg(event)" id="upload">
                 </div>
-                <input type="button" class='btn' value="run hanami">    
+                <a class='btn' href="https://github.com/kathrynng/hanamiUrself">Github Page</a>    
                 
             </div>
             <div id="canvas-div">
 
             </div>
-
+        </div>
+        <div id="creds">
+            <h2>
+                Made with
+            </h2>
+            <a href="https://p5js.org/"><img alt="p5js" src="https://p5js.org/assets/img/p5js.svg"></a>
         </div>
     </body>
 </html>
