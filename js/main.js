@@ -44,7 +44,7 @@ function p5run(){
             //cherry blossom obj
             cherryB = function() {
                 
-                this.cbimg = '../imgs/petal' + p.int(p.random(1,4)) + '.png'
+                this.cbimg = './imgs/petal' + p.int(p.random(1,4)) + '.png'
                 this.x = p.int(p.random(-400, 400))
                 this.y = -5
                 this.speedX = p.random(3, 7)
