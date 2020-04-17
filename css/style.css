@@ -6,6 +6,12 @@ html, body, h1, h2, h3, p{
     font-family: 'Nanum Pen Script', monospace;
 }
 
+h1{
+    color:rgb(211, 150, 160);
+    text-align: center;
+    margin:2rem 0;
+}
+
 .btn-wrapper{
     position: relative;
     overflow: hidden;
@@ -44,4 +50,7 @@ html, body, h1, h2, h3, p{
 #canvas-div{
     width: 800px;
     margin: 2em auto;
+
+    display: flex;
+    justify-content: center;
 }

@@ -1,19 +1,50 @@
-var img, iW, iH, canv = null;
+var img, iW = 800 , iH = 800, canv = null;
 
 var loadImg = function(event){
+
     img = URL.createObjectURL(event.target.files[0])
-    $('#output').attr('src', img)
-    canv = p5run()
+    var upload = new Image()
     
+    upload.src = img
+    upload.onload = function(){
+        iW = this.width
+        iH = this.height
+
+        canv = p5run()
+    }
+    // $('#output').attr('src', img)
+    
+    $('#upload').attr('value','Upload a new Image')
 }
 function p5run(){
     if(canv===null){
         const s = p => {
-            var nCb = 25, cherries = []
+            var nCb = 25, cherries = [], cnvH = 800, cnvW = 800
+            
+            p.setup = function(){   
 
-            p.setup = function(){
-               
-                p.createCanvas(800, 800);
+                console.log(iW + " " + iH)
+
+                if(iW == iH && iW > 800){
+                    cnvW = 800
+                    cnvH = 800
+                    console.log('run1')
+                }else if(iW > 800){
+                    cnvW = 800
+                    cnvH = iH * (cnvW/iW)
+                    console.log('run2')
+                }else if(iH > 800){
+                    cnvH = 800
+                    cnvW = iW * (cnvH/iH)
+                    console.log('run4')
+                }else{
+                    cnvW = iW
+                    cnvH = iH
+                    console.log('run76')
+                }
+
+                
+                p.createCanvas(cnvW, cnvH);
                 p5img = p.loadImage(img);
                 
                 for(var i = 0; i < nCb; i++)
@@ -29,7 +60,7 @@ function p5run(){
                 p.background(55)
 
                 p.imageMode(p.CORNER)
-                p.image(p5img,0,0,800,800)
+                p.image(p5img,0,0,cnvW,cnvH)
 
                 
 
