@@ -73,3 +73,34 @@ a{
     display:block;
     margin: 0 auto;
 }
+
+#reviews {
+    margin: 0 auto;
+    display: block;
+    /* width: 250px; */
+}
+
+.review {
+    /* width: 250px; */
+    margin: 3em 0;
+}
+
+.review h3{
+    text-align: right;
+    margin: 0;
+}
+
+.review p{
+    font-size: 20px;
+    text-align: right;
+}
+
+.review .my-reply {
+    text-align: left;
+}
+
+hr {
+    width: 50px;
+    border-color: pink;
+    margin: 3em auto;
+}

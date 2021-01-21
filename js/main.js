@@ -1,18 +1,17 @@
 var img, iW = 800 , iH = 800, canv = null;
 
 var loadImg = function(event){
-
     img = URL.createObjectURL(event.target.files[0])
     var upload = new Image()
     
     upload.src = img
+    console.log(upload)
     upload.onload = function(){
         iW = this.width
         iH = this.height
 
         p5run()
     }
-    // $('#output').attr('src', img)
     
     $('#upload').attr('value','Upload a new Image')
 }
@@ -99,7 +98,6 @@ function p5run(){
 
                 p.image(this.cherryImg, this.x, this.y)
               
-                
             }
         }
         
