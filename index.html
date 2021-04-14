@@ -40,23 +40,75 @@
             <h1>Hanami Urself by Kathryn Ng</h1>
         </div>
         <div id="work" class="container">
-            <div class="btn-row">
-                <div class="btn-wrapper" id="upld-btn">
-                    <label for="upload" class="btn">Upload an Image</label>
-                    <input type='file' accept="image/*" name="image" onchange="loadImg(event)" id="upload">
+            <div class="row justify-content-center align-items-center">
+                <div class="col btn-item">
+                    <div class="btn-wrapper" id="upld-btn">
+                        <label for="upload" class="btn" id="uploadBtn">Upload an Image</label>
+                        <input type='file' accept="image/*" name="image" onchange="loadImg(event)" id="upload"/>
+                    </div>
                 </div>
-                <a class='btn' href="https://github.com/kathrynng/hanamiUrself">Github Page</a>    
-                
+                <div class="col btn-item">
+                    <a class='btn' href="https://github.com/kathrynng/hanamiUrself">Github Page</a>    
+                </div>
             </div>
-            <div id="canvas-div">
-
+            <div class="row justify-content-center align-items-center">
+                <div id="canvas-div">
+    
+                </div>
+            </div>
+            <div class="column settings">
+                <!-- Speed -->
+                <div class="col">
+                    <label for="speedSlider" class="SettingLabel">Speed:</label>
+                    <input type="range" min="1" max="8" value="4" class="slider" id="speedSlider">
+                    <label class="SettingLabel" id="speedLabel">Default</label>
+                </div>
+                <!-- Orientation (L/R) -->
+                <div class="col">
+                    <label class="SettingLabel">Direction:</label>
+                    <div id="directionOption" class="btn-group direction-btn-group">
+                        <input type="radio" id="directionL" name="directionSelect" value="left" checked/>
+                        <label for="directionL">
+                            Left
+                        </label>
+                        
+                        <input type="radio" id="directionR" name="directionSelect" value="right"/>
+                        <label for="directionR">
+                            Right
+                        </label>
+                    </div>
+                </div>
+                <!-- Size -->
+                <div class="col">
+                    <label class="SettingLabel">Petals Amount:</label>
+                    <div id="amountOption" class="btn-group direction-btn-group">
+                        <input type="radio" id="amountOptionLess" name="amountSelect" value="45"/>
+                        <label for="amountOptionLess">
+                            Less
+                        </label>
+                        
+                        <input type="radio" id="amountOptionDef" name="amountSelect" value="80" checked/>
+                        <label for="amountOptionDef">
+                            Default
+                        </label>
+                        
+                        <input type="radio" id="amountOptionMore" name="amountSelect" value="110"/>
+                        <label for="amountOptionMore">
+                            More
+                        </label>
+                    </div>
+                </div>
             </div>
         </div>
         <div id="creds">
             <h2>
                 Made with
             </h2>
-            <a href="https://p5js.org/"><img alt="p5js" src="https://p5js.org/assets/img/p5js.svg"></a>
+            <div>
+                <!-- <a href="https://p5js.org/"> -->
+                    <img alt="p5js" src="https://p5js.org/assets/img/p5js.svg">
+                <!-- </a> -->
+            </div>
         </div>
         <div class="container">
             <div class="row">

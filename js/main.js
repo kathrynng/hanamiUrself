@@ -1,11 +1,13 @@
 var img, iW = 800 , iH = 800, canv = null;
+var speedConstant=1;
+var direction=1;
+var newAmount, amount=75;
 
 var loadImg = function(event){
     img = URL.createObjectURL(event.target.files[0])
     var upload = new Image()
     
     upload.src = img
-    console.log(upload)
     upload.onload = function(){
         iW = this.width
         iH = this.height
@@ -13,12 +15,32 @@ var loadImg = function(event){
         p5run()
     }
     
-    $('#upload').attr('value','Upload a new Image')
+    $('#uploadBtn').attr('value','Upload a new Image')
 }
+
+$(document).on('input', '#speedSlider', function() {
+    let newSpeed = $(this).val() * 0.25
+    speedConstant =  newSpeed
+    if (speedConstant === 1){
+        $('#speedLabel').html('Default')
+    } else {
+        $('#speedLabel').html(speedConstant)
+    }
+});
+
+$(document).on('input', '#directionOption', function() {
+    direction = $('input[name=directionSelect]:checked', '#directionOption').val() === 'left' ? 1 : -1;
+});
+
+$(document).on('input', '#amountOption', function() {
+    newAmount = $('input[name=amountSelect]:checked', '#amountOption').val();
+    console.log("sele " + newAmount)
+});
+
 function p5run(){
     
     const s = p => {
-        var nCb = 25, cherries = [], cnvH = 800, cnvW = 800
+        var cherries = [], cnvH = 800, cnvW = 800
         
         p.setup = function(){   
 
@@ -40,52 +62,75 @@ function p5run(){
             p.createCanvas(cnvW, cnvH);
             p5img = p.loadImage(img);
             
-            for(var i = 0; i < nCb; i++)
+            if(!!newAmount){
+                amount = newAmount
+            }
+
+            for(var i = 0; i < amount; i++)
                 cherries.push(new cherryB())
-                
-            
                 
            p.colorMode(p.RGB, 255, 255, 255, 1)
            p.noStroke();
         
         }
+        
         p.draw = function(){
             p.background(55)
 
             p.imageMode(p.CORNER)
             p.image(p5img,0,0,cnvW,cnvH)
 
-            
-
             //run cherry blossoms
             cherries.forEach(cherry => {
                 cherry.move()
                 cherry.display()
-               
             });
+
+            if(!!newAmount && newAmount !== amount){
+                cherries = [];
+                for(var i = 0; i < newAmount; i++){
+                    cherries.push(new cherryB())
+                }
+                amount = newAmount
+            }
         }
 
         //cherry blossom obj
         cherryB = function() {
-            
-            this.cbimg = './imgs/petal' + p.int(p.random(1,4)) + '.png'
-            this.x = p.int(p.random(-(cnvW/2), cnvW))
-            this.y = -5
-            this.speedX = p.random(3, 7)
-            this.speedY =  p.random(3, 7)
-            this.cherryImg = p.loadImage(this.cbimg)
 
+            this.cbimg = './imgs/petal' + p.int(p.random(1,7)) + '.png'
+            if (direction === 1){
+                this.x = p.int(p.random(-2*cnvW, cnvW))
+            } else {
+                this.x = p.int(p.random(0, 2*cnvW))
+            }
+            this.y = -5
+            this.speedX = p.random(3, 7) *  speedConstant * direction
+            this.speedY =  p.random(3, 7) *  speedConstant
+            this.cherryImg = p.loadImage(this.cbimg)
+            
+            var scale=p.random(0.1,1.25)
             
             this.move = function (){
-                this.x += this.speedX
-                this.y += this.speedY
+                this.x += this.speedX * speedConstant
+                this.y += this.speedY * speedConstant
 
-                if(this.x > (cnvW + 10) || this.y > (cnvH + 10)){
-                    this.x = p.int(p.random(-(cnvW/2), cnvW))
-                    this.y = -5
-                    this.speedX = p.random(3, 7)
-                    this.speedY =  p.random(3, 7)
-
+                if(direction === 1){
+                    if((this.x > (cnvW + 10)) || this.y > (cnvH + 5)){
+                        this.x = p.int(p.random(-2*cnvW, cnvW))
+                        this.y = -5
+                        this.speedX = p.random(3, 7) *  speedConstant * direction
+                        this.speedY =  p.random(3, 7) *  speedConstant
+                        scale=p.random(0.1,1.25)
+                    }
+                } else {
+                    if ((this.x < -10) || this.y > (cnvH + 5)){
+                        this.x = p.int(p.random(0, 2*cnvW))
+                        this.y = -5
+                        this.speedX = p.random(3, 7) *  speedConstant * direction
+                        this.speedY =  p.random(3, 7) *  speedConstant
+                        scale=p.random(0.1,1.25)
+                    }
                 }
             }
 
@@ -96,7 +141,7 @@ function p5run(){
                 
                 p.imageMode(p.CENTER)
 
-                p.image(this.cherryImg, this.x, this.y)
+                p.image(this.cherryImg, this.x, this.y, scale*this.cherryImg.width, scale*this.cherryImg.height)
               
             }
         }

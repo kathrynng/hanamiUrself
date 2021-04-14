@@ -27,8 +27,24 @@ a{
     border-radius: 5px;
     color:pink;
     border: 2px solid pink;
+}
 
-    margin: 0 5em;
+.btn-directions{
+    font-size: 15pt;
+    border-radius: 2px;
+    color:pink;
+    border: 2px solid pink;
+
+    margin: 0;
+}
+
+.btn-size{
+    font-size: 15pt;
+    border-radius: 2px;
+    color:pink;
+    border: 2px solid pink;
+
+    margin: 0;
 }
 
 .btn-row{
@@ -56,11 +72,41 @@ a{
     opacity: 0;
 }
 
+.direction-btn-group input[type="radio"]{
+    opacity: 0;
+    position: fixed;
+    width: 0;
+}
+
+.direction-btn-group label{
+    padding: 6px 12px;
+    font-size: 15pt;
+    border: 2px solid pink;
+    border-radius: 5px;
+    color: pink;
+    margin: 2px;
+}
+
+.btn-item {
+    text-align: center;
+}
+
+.direction-btn-group label:hover{
+    border-color: plum;
+    color: plum;
+    cursor: pointer;
+}
+
+.direction-btn-group input:checked + label{
+    border-color: plum;
+    color: plum;
+}
+
 #canvas-div{
     width: 800px;
-    margin: 2em auto;
+    /* margin: 2em auto; */
 
-    display: flex;
+    /* /* display: flex; */
     justify-content: center;
 }
 
@@ -103,4 +149,62 @@ hr {
     width: 50px;
     border-color: pink;
     margin: 3em auto;
+}
+
+.settings {
+    width: 100%;
+}
+
+.settings div {
+    display: flex;
+    align-items: center;
+
+    margin: 0.5rem 0;
+}
+
+.SettingLabel {
+    font-size: 18pt;
+}
+
+.slider {
+    -webkit-appearance: none;
+    width: 50%;
+    height: 10px;
+    border-radius: 5px;
+    background: #d3d3d3;
+    outline: none;
+    margin: 0 2rem;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%; 
+    background: plum;
+    cursor: pointer;
+  }
+  
+  .slider::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: plum;
+    cursor: pointer;
+  }
+
+  #speedLabel {
+      color: plum;
+  }
+@media (max-width: 1200px) { 
+    h1 {
+        font-size: 4.5rem;
+    }
+    h2{
+        font-size: 3.5rem;
+    }
+    h3, p, label, a {
+        font-size: 3rem !important;
+    }
 }
