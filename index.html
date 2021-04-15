@@ -57,6 +57,7 @@
                 </div>
             </div>
             <div class="column settings">
+                <h2>Settings</h2>
                 <!-- Speed -->
                 <div class="col">
                     <label for="speedSlider" class="SettingLabel">Speed:</label>
@@ -78,7 +79,7 @@
                         </label>
                     </div>
                 </div>
-                <!-- Size -->
+                <!-- Amount -->
                 <div class="col">
                     <label class="SettingLabel">Petals Amount:</label>
                     <div id="amountOption" class="btn-group direction-btn-group">
@@ -92,9 +93,39 @@
                             Default
                         </label>
                         
-                        <input type="radio" id="amountOptionMore" name="amountSelect" value="110"/>
+                        <input type="radio" id="amountOptionMore" name="amountSelect" value="120"/>
                         <label for="amountOptionMore">
                             More
+                        </label>
+                    </div>
+                </div>
+                <!-- Size -->
+                <div class="col">
+                    <label class="SettingLabel">Petal Size:</label>
+                    <div id="sizeOption" class="btn-group direction-btn-group">
+                        <input type="radio" id="sizeTiny" name="sizeSelect" value="0.25"/>
+                        <label for="sizeTiny">
+                            Tiny
+                        </label>
+
+                        <input type="radio" id="sizeSmall" name="sizeSelect" value="0.5"/>
+                        <label for="sizeSmall">
+                            Small
+                        </label>
+                        
+                        <input type="radio" id="sizeDef" name="sizeSelect" value="1" checked/>
+                        <label for="sizeDef">
+                            Default
+                        </label>
+                        
+                        <input type="radio" id="sizeBig" name="sizeSelect" value="1.75"/>
+                        <label for="sizeBig">
+                            Big
+                        </label>
+                       
+                        <input type="radio" id="sizeHuge" name="sizeSelect" value="2.25"/>
+                        <label for="sizeHuge">
+                            Huge
                         </label>
                     </div>
                 </div>

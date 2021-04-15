@@ -1,7 +1,8 @@
 var img, iW = 800 , iH = 800, canv = null;
 var speedConstant=1;
 var direction=1;
-var newAmount, amount=75;
+var newAmount, amount=75, amountSelected = "default";
+var globalScale=1;
 
 var loadImg = function(event){
     img = URL.createObjectURL(event.target.files[0])
@@ -33,8 +34,16 @@ $(document).on('input', '#directionOption', function() {
 });
 
 $(document).on('input', '#amountOption', function() {
-    newAmount = $('input[name=amountSelect]:checked', '#amountOption').val();
-    console.log("sele " + newAmount)
+    amountSelected = $('input[name=amountSelect]:checked', '#amountOption').val();
+    switch(amountSelected){
+        case "less": newAmount = 45; break;
+        case "default": newAmount = 80; break;
+        case "more": newAmount = 120; break;
+    }
+});
+
+$(document).on('input', '#sizeOption', function() {
+    globalScale = $('input[name=sizeSelect]:checked', '#sizeOption').val();
 });
 
 function p5run(){
@@ -109,7 +118,7 @@ function p5run(){
             this.speedY =  p.random(3, 7) *  speedConstant
             this.cherryImg = p.loadImage(this.cbimg)
             
-            var scale=p.random(0.1,1.25)
+            var scale=p.random(0.1,1.25)*globalScale
             
             this.move = function (){
                 this.x += this.speedX * speedConstant
@@ -121,7 +130,7 @@ function p5run(){
                         this.y = -5
                         this.speedX = p.random(3, 7) *  speedConstant * direction
                         this.speedY =  p.random(3, 7) *  speedConstant
-                        scale=p.random(0.1,1.25)
+                        scale=p.random(0.1,1.25)*globalScale
                     }
                 } else {
                     if ((this.x < -10) || this.y > (cnvH + 5)){
@@ -129,7 +138,7 @@ function p5run(){
                         this.y = -5
                         this.speedX = p.random(3, 7) *  speedConstant * direction
                         this.speedY =  p.random(3, 7) *  speedConstant
-                        scale=p.random(0.1,1.25)
+                        scale=p.random(0.1,1.25)*globalScale
                     }
                 }
             }
